@@ -1,0 +1,22 @@
+.header {
+  position: fixed;
+  top: 2vw;
+  left: 5vw;
+
+  height: 4rem;
+  width: 90vw;
+
+  background-color: #fff;
+  border: thin solid currentColor;
+  box-shadow: 0 0 3rem -1.5rem currentColor;
+  border-radius: 2rem;
+
+  padding: 0 2rem;
+
+  color: steelblue;
+
+  display: grid;
+  grid-template: "logo dropDown colorPicker" 1fr / auto 1fr 1fr;
+  grid-gap: 2rem;
+  align-items: center;
+}
