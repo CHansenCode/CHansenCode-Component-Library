@@ -4,7 +4,7 @@ import css from "./Input.module.scss";
 
 import { AiOutlineCheck } from "react-icons/ai";
 
-const Input = ({ label, placeholder, truthy, required, infoHover, id, className, value, onChange }) => {
+const Input = ({ label, placeholder, valid, required, infoHover, id, className, value, onChange }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   function onFocus() {
@@ -15,7 +15,7 @@ const Input = ({ label, placeholder, truthy, required, infoHover, id, className,
   }
 
   return (
-    <div className={`${css.div} ${className} ${truthy && css.valid}`}>
+    <div className={`${css.div} ${className} ${valid && css.valid}`}>
       <header className={css.header}>
         {label && <h5 className={css.label}>{label} :</h5>}
         {required && <h6 className={css.required}>* req.</h6>}
