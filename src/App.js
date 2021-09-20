@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import Section from "./components/Section/Section";
 
 function App() {
+  const [category, setCategory] = useState("");
   return (
     <>
       <Section center column title="cow">
