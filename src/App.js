@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Section from "./components/Section/Section";
+import ContactForm from "./components/Form-live-validation";
 
 function App() {
   const [category, setCategory] = useState("");
@@ -24,6 +25,10 @@ function App() {
         <h5>Lorem ipsum dolor sit amet consectetur.</h5>
         <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
       </Section>
+      <Section title="react contact form w. live validation">
+        <ContactForm />
+      </Section>
+      <Section></Section>
     </>
   );
 }

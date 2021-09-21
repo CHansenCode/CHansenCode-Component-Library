@@ -1,12 +1,8 @@
-**_Component readme template_**
+# Component: Textarea
 
-# Component: NameOfComponent
-
-### Description / purpose
+## Description
 
 Input element with additional functions dependant on props passed from parent form.
-
-### Props
 
 | Prop      | input   |
 | --------- | ------- |
@@ -15,36 +11,39 @@ Input element with additional functions dependant on props passed from parent fo
 | required  | boolean |
 | infoHover | string  |
 
-**_html defaults passed through props_**
+##### html defaults passed through props
 
 | prop        | input  |
 | ----------- | ------ |
 | id          | string |
-| placeholder | string |
 | className   | string |
+| placeholder | string |
+| rows        | number |
 | value       | -      |
 | onChange    | func.  |
-
-## Usage
-
-```javascript
-<NameOfComponent
-  //added functions
-  label="A label: top left" //                              - description of what happens on/if input
-  valid={false | true} //                                   - description of what happens on/if input       req* <- if required
-  required //                                               - description if present
-  //
-  //default html element keys
-  id="nameId"
-  className={`${css.className} globalName`}
-  placeholder="String example"
-  value={formData.key}
-  onChange={() => handleOnChange()}
-/>
-```
 
 ## Dependencies
 
 - react-icons
 
-###### v.1.0.0 2021-09-20, by: **_ChansenCode-CH_**
+## Usage
+
+```javascript
+<Input
+    //added functions
+    label="A label: top left"
+    valid={false | true}                //applies green valid styling and check icon for live validation
+    required                            //adds 'req *' to the right of/if label, else in place of label
+    infoHover="min 5 characters etc"    //adds 'i' icon, when hovered or input is in focus, display inputInfo
+
+    //default html
+    id="nameId"
+    className="passCssHere" | {css.className}
+    rows="5" | {contentSpy}
+    placeholder="String example"
+    value={formData.key}
+    onChange={handleOnChange}
+/>
+```
+
+###### v.1.0.0 2021-09-21, tried & tested by - **_ChansenCode_**
