@@ -1,0 +1,101 @@
+@import "/src/style/colors";
+
+.div {
+  position: relative;
+  h5 {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.div .inputWrapper {
+  position: relative;
+  input {
+    width: 100%;
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    height: 100%;
+    width: 1rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+.valid .inputWrapper {
+  background-color: $success-fade;
+  .checkmark {
+    opacity: 1;
+  }
+}
+
+//#region HEADER
+.header {
+  display: grid;
+  grid-template: "label required infoHover" 1fr / auto auto 1fr;
+  .label {
+    grid-area: label;
+  }
+  .required {
+    grid-area: required;
+  }
+  .infoHover {
+    grid-area: infoHover;
+  }
+}
+
+.header .label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.header .required {
+  color: $interaction;
+  opacity: 0.8;
+}
+
+.header .infoHover {
+  position: relative;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  .infoText {
+    position: absolute;
+    font-weight: 500;
+    right: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .infoIcon {
+    height: 1rem;
+    width: 1rem;
+    border: thin solid;
+    border-radius: 50%;
+    text-align: center;
+    margin-bottom: 0.1rem;
+  }
+}
+
+.header .infoHover:hover {
+  cursor: help;
+  .infoText {
+    opacity: 1;
+  }
+  .infoIcon {
+    opacity: 0;
+  }
+}
+
+// onFocus on, onBlur, off
+.header .inputIsFocused {
+  .infoText {
+    opacity: 1;
+  }
+  .infoIcon {
+    opacity: 0;
+  }
+}
+//#endregion

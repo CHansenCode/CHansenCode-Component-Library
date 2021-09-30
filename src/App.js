@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import Section from "./components/Section/Section";
-import ContactForm from "./components/Form-live-validation";
+import Dropdown from "./components/Dropdown/Dropdown";
 
 function App() {
-  const [category, setCategory] = useState("");
   return (
     <>
       <Section center column title="cow">
@@ -25,10 +24,11 @@ function App() {
         <h5>Lorem ipsum dolor sit amet consectetur.</h5>
         <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
       </Section>
-      <Section title="react contact form w. live validation">
-        <ContactForm />
+      <Section>
+        <div>
+          <Dropdown></Dropdown>
+        </div>
       </Section>
-      <Section></Section>
     </>
   );
 }

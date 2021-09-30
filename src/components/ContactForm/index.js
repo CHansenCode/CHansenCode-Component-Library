@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 
-import Input from "../Input/Input";
-import Select from "../Select/Select";
-import Textarea from "../Textarea/Textarea";
+import Input from "./Input/Input";
+import Select from "./Select/Select";
+import Textarea from "./Textarea/Textarea";
 import Button from "../Button/Button";
 import SendingSuccess from "../SendingSuccess/SendingSuccess";
 
 import css from "./ContactForm.module.scss";
 
-// import { postContactForm } from "./actions/contactForm.js";
+// import { postContactForm } from "@/actions/contactForm.js";
 
-const ContactForm = ({ Heading }) => {
-  //   const dispatch = useDispatch();
-  const [allValid, setAllValid] = useState(false);
+const ContactForm = (width) => {
+  // const dispatch = useDispatch();
+
   const [valid, setValid] = useState({
     name: false,
     contactInfo: false,
     message: false,
   });
-  const [loading, setLoading] = useState(false);
-
+  const [allValid, setAllValid] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -47,8 +47,8 @@ const ContactForm = ({ Heading }) => {
   }, [formData.contactInfo]);
 
   useEffect(() => {
-    // all but .,:) for messages
-    var forbidden = /[!@#$%^&*(_+\-=\[\]{};'"\\|<>\/?]+/;
+    // all but .,:)? for messages
+    var forbidden = /[!@#$%^&*(_+\-=\[\]{};'"\\|<>\/]+/;
 
     formData.message.length > 5 && !forbidden.test(formData.message)
       ? setValid({ ...valid, message: true })
@@ -58,13 +58,12 @@ const ContactForm = ({ Heading }) => {
   useEffect(() => {
     valid.name == true && valid.contactInfo == true && valid.message == true ? setAllValid(true) : setAllValid(false);
   }, [valid]);
-
   //#endregion
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch(postContactForm(formData));
-    setLoading(true);
+    // setLoading(true);
   };
   function clear(e) {
     e.preventDefault();
@@ -82,10 +81,8 @@ const ContactForm = ({ Heading }) => {
     });
   }
 
-  //   const sendStatus = useSelector((state) => state);
-
   return (
-    <div className={css.outerDiv}>
+    <div className={css.div}>
       <form onSubmit={(e) => e.preventDefault()} className={css.form}>
         <>
           <h3>Contact Form</h3>
@@ -93,7 +90,7 @@ const ContactForm = ({ Heading }) => {
             label="name"
             required
             infoHover="min. 2 characters"
-            truthy={valid.name}
+            valid={valid.name}
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, [e.target.id]: e.target.value })}
@@ -103,7 +100,7 @@ const ContactForm = ({ Heading }) => {
             label="Contact Information"
             required
             infoHover="min. 5 characters, only - & @ allowed"
-            truthy={valid.contactInfo}
+            valid={valid.contactInfo}
             id="contactInfo"
             value={formData.contactInfo}
             onChange={(e) => setFormData({ ...formData, [e.target.id]: e.target.value })}
@@ -113,22 +110,22 @@ const ContactForm = ({ Heading }) => {
             <h5>Select category</h5>
             <Select
               text="architecture"
-              truthy={formData.category === "architecture"}
+              valid={formData.category === "architecture"}
               onClick={(e) => setFormData({ ...formData, category: "architecture" })}
             />
             <Select
               text="webdesign"
-              truthy={formData.category === "webdesign"}
+              valid={formData.category === "webdesign"}
               onClick={(e) => setFormData({ ...formData, category: "webdesign" })}
             />
             <Select
               text="graphics"
-              truthy={formData.category === "graphics"}
+              valid={formData.category === "graphics"}
               onClick={(e) => setFormData({ ...formData, category: "graphics" })}
             />
             <Select
               text="Other"
-              truthy={formData.category === "other"}
+              valid={formData.category === "other"}
               onClick={(e) => setFormData({ ...formData, category: "other" })}
             />
           </div>
@@ -137,14 +134,14 @@ const ContactForm = ({ Heading }) => {
             label="Message"
             required
             infoHover="min. 10 characters, no special characters"
-            truthy={valid.message}
+            valid={valid.message}
             rows="5"
             id="message"
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, [e.target.id]: e.target.value })}
           />
         </>
-        <SendingSuccess />
+
         <div className={css.buttonsWrapper}>
           <Button
             text={allValid ? "Send!" : "Please fill out the form"}

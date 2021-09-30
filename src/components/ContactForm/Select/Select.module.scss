@@ -1,0 +1,6 @@
+@import "src/style/colors";
+
+.active {
+  border: thin solid $interaction;
+  color: $interaction;
+}
