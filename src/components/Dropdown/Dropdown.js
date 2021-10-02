@@ -4,10 +4,6 @@ import Button from "../Button/Button";
 
 const Dropdown = ({ activePage, height, children }) => {
   const [open, setOpen] = useState(false);
-  const [hover, setHover] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("cow");
-
-  const arr = [{ title: "cow" }, { title: "fox" }, { title: "cat" }, { title: "dog" }];
 
   const handleMouseEnter = () => {
     setOpen(true);
