@@ -1,0 +1,10 @@
+.wrapper {
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    grid-template:
+      "a" 1fr
+      "b" 1fr / 1fr;
+  }
+}

@@ -1,23 +1,28 @@
 import { useState } from "react";
 
 import Section from "../components/Section/Section";
+import Row from "../components/Row/Row";
 
 import Button from "../components/Button/Button";
-import DropDown from "../components/Dropdown/Dropdown";
 import Card from "../components/Card/Card";
+import DangerousHtml from "../components/DangerousHtml/DangerousHtml";
+import CodeBlocker from "../components/CodeBlock/CodeBlock";
 
-const Etc = () => {
+const Etc = ({ primaryColor, secondaryColor }) => {
   const [on, setOn] = useState(true);
   return (
     <>
-      <Section title="Card">
-        <Card></Card>
+      <Section title="Cards">
+        <Row center width="800px" gap="100px">
+          <Card width="100%" primaryColor={primaryColor} secondaryColor={secondaryColor} />
+          <Card width="100%" primaryColor={primaryColor} secondaryColor={secondaryColor} />
+        </Row>
       </Section>
       <Section title="Form components">
-        <Button text="Example" onClick={() => setOn(!on)} />
+        <DangerousHtml data="<h1>hello</h1>" />
       </Section>
       <Section title="Button">
-        <Button text="Example" onClick={() => setOn(!on)} />
+        <CodeBlocker code="<div> hello </div>" />
       </Section>
     </>
   );
